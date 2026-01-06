@@ -1,0 +1,472 @@
+<<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kenzo store - Top Up Game Terpercaya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #7d2ae8; /* Warna Ungu Utama */
+            --accent: #00e5ff; /* Warna Neon Biru */
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(30, 30, 30, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1920x1080/2a2a2a/FFF?text=Game+Banner+Background');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 600px;
+        }
+
+        /* --- GAMES GRID --- */
+        .container {
+            padding: 50px 5%;
+        }
+
+        .section-title {
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+            font-size: 1.8rem;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .game-card {
+            background-color: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(125, 42, 232, 0.3);
+            border-color: var(--primary);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .game-info h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        /* --- ORDER SECTION (SIMULASI) --- */
+        .order-section {
+            display: none; /* Hidden by default */
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .input-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            background-color: #2a2a2a;
+            color: white;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Item Grid */
+        .item-grid, .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .selection-card {
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .selection-card:hover {
+            background-color: #333;
+        }
+
+        .selection-card.active {
+            border-color: var(--accent);
+            background-color: rgba(0, 229, 255, 0.1);
+        }
+
+        .price {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-style: italic;
+        }
+
+        /* Payment Icons */
+        .payment-card img {
+            height: 30px;
+            margin-bottom: 5px;
+        }
+
+        .btn-order {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, var(--primary), #5b1ac2);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-order:hover {
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .input-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Gamer<span>TopUp</span></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#games">Games</a>
+            <a href="#">Lacak Pesanan</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Top Up Game <br> <span>Murah & Cepat</span></h1>
+        <p>Layanan top up game online terpercaya di Indonesia. Proses instan 24 jam.</p>
+    </section>
+
+    <div class="container" id="games">
+        <h2 class="section-title">Pilih Game</h2>
+        <div class="game-grid">
+            <div class="game-card" onclick="openOrder('Mobile Legends')">
+                <img src="https://placehold.co/300x400/1a1a1a/FFF?text=Mobile+Legends" alt="MLBB">
+                <div class="game-info">
+                    <h3>Mobile Legends</h3>
+                </div>
+            </div>
+            <div class="game-card" onclick="openOrder('Free Fire')">
+                <img src="download.jpg" alt="FF">
+                <div class="game-info">
+                    <h3>Free Fire</h3>
+                </div>
+            </div>
+            <div class="game-card" onclick="openOrder('PUBG Mobile')">
+                <img src="pubg-theme.avif" alt="PUBGM">
+                <div class="game-info">
+                    <h3>PUBG Mobile</h3>
+                </div>
+            </div>
+            <div class="game-card" onclick="openOrder('Genshin Impact')">
+                <img src="https://placehold.co/300x400/1a1a1a/FFF?text=Genshin+Impact" alt="Genshin">
+                <div class="game-info">
+                    <h3>Genshin Impact</h3>
+                </div>
+            </div>
+            <div class="game-card" onclick="openOrder('Valorant')">
+                <img src="https://placehold.co/300x400/1a1a1a/FFF?text=Valorant" alt="Valorant">
+                <div class="game-info">
+                    <h3>Valorant</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="order-form-container" class="order-section">
+            <h2 class="section-title">Top Up <span id="game-title-target">Game</span></h2>
+            
+            <div class="form-group">
+                <label>1. Masukkan User ID</label>
+                <div class="input-row">
+                    <input type="number" id="user-id" placeholder="Masukkan User ID">
+                    <input type="number" id="server-id" placeholder="Zone ID (Jika ada)">
+                </div>
+                <small style="color: #777; margin-top:5px; display:block;">Contoh: 12345678 (1234)</small>
+            </div>
+
+            <div class="form-group">
+                <label>2. Pilih Nominal</label>
+                <div class="item-grid" id="item-list">
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label>3. Pilih Pembayaran</label>
+                <div class="payment-grid" id="payment-list">
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn-order" onclick="processOrder()">Beli Sekarang</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 GamerTopUp. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Data Dummy Nominal
+        const items = [
+            { name: "86 Diamonds", price: 20000 },
+            { name: "172 Diamonds", price: 40000 },
+            { name: "257 Diamonds", price: 60000 },
+            { name: "706 Diamonds", price: 150000 },
+            { name: "2195 Diamonds", price: 450000 },
+            { name: "Twilight Pass", price: 145000 },
+        ];
+
+        // Data Dummy Pembayaran
+        const payments = [
+            { name: "QRIS", type: "Instan" },
+            { name: "GoPay", type: "E-Wallet" },
+            { name: "DANA", type: "E-Wallet" },
+            { name: "OVO", type: "E-Wallet" },
+            { name: "BCA", type: "Transfer" },
+            { name: "BRI", type: "Transfer" },
+        ];
+
+        let selectedItem = null;
+        let selectedPayment = null;
+
+        // Fungsi saat Game diklik
+        function openOrder(gameName) {
+            document.getElementById('game-title-target').innerText = gameName;
+            document.getElementById('order-form-container').style.display = 'block';
+            
+            // Scroll halus ke form
+            document.getElementById('order-form-container').scrollIntoView({ behavior: 'smooth' });
+
+            renderItems();
+            renderPayments();
+        }
+
+        // Render Kartu Nominal
+        function renderItems() {
+            const container = document.getElementById('item-list');
+            container.innerHTML = '';
+            items.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = `selection-card ${selectedItem === index ? 'active' : ''}`;
+                div.onclick = () => selectItem(index);
+                div.innerHTML = `
+                    <b>${item.name}</b>
+                    <span class="price">Rp ${item.price.toLocaleString('id-ID')}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Kartu Pembayaran
+        function renderPayments() {
+            const container = document.getElementById('payment-list');
+            container.innerHTML = '';
+            payments.forEach((pay, index) => {
+                const div = document.createElement('div');
+                div.className = `selection-card ${selectedPayment === index ? 'active' : ''}`;
+                div.onclick = () => selectPayment(index);
+                div.innerHTML = `
+                    <i class="fas fa-wallet" style="font-size:20px; margin-bottom:5px;"></i><br>
+                    <b>${pay.name}</b>
+                    <span class="price">${pay.type}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Logika Seleksi
+        function selectItem(index) {
+            selectedItem = index;
+            renderItems();
+        }
+
+        function selectPayment(index) {
+            selectedPayment = index;
+            renderPayments();
+        }
+
+        // Proses Order (Simulasi)
+        function processOrder() {
+            const userId = document.getElementById('user-id').value;
+            const zoneId = document.getElementById('server-id').value;
+            const gameName = document.getElementById('game-title-target').innerText;
+
+            // Validasi
+            if (!userId) {
+                alert("Harap masukkan User ID!");
+                return;
+            }
+            if (selectedItem === null) {
+                alert("Harap pilih nominal top up!");
+                return;
+            }
+            if (selectedPayment === null) {
+                alert("Harap pilih metode pembayaran!");
+                return;
+            }
+
+            const itemData = items[selectedItem];
+            const payData = payments[selectedPayment];
+
+            // Tampilkan Pesan Sukses (Simulasi)
+            const message = `
+            KONFIRMASI PESANAN:
+            -------------------
+            Game: ${gameName}
+            ID: ${userId} (${zoneId})
+            Item: ${itemData.name}
+            Harga: Rp ${itemData.price.toLocaleString('id-ID')}
+            Bayar via: ${payData.name}
+            
+            Status: Menunggu Pembayaran...
+            `;
+            
+            alert(message);
+            // Disini biasanya kode backend akan dijalankan (redirect ke payment gateway)
+        }
+    </script>
+</body>
+</html>
